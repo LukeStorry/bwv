@@ -1,37 +1,32 @@
 {
   "name": "bwv-sdg",
   "private": true,
-  "description": "A mapping of bwv womanifesto to the Bristol sdgs",
+  "description": "A mapping of the Bristol Womens' Voice Womanifesto to the Bristol Sustainable Development Goals",
   "version": "0.1.0",
   "author": "Luke Storry <Luke@Storry.com>",
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
-    "gatsby": "^2.24.10",
-    "gatsby-plugin-emotion": "^4.3.10",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "twin.macro": "^1.6.2"
+    "@11ty/eleventy": "^0.11.0",
+    "autoprefixer": "^9.8.5",
+    "cross-env": "^7.0.2",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.1",
+    "rimraf": "^3.0.2",
+    "tailwindcss": "^1.6.0",
+    "yarn-run-all": "^3.1.1"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "prettier": "^2.0.5"
   },
   "license": "MIT",
   "scripts": {
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "lint": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
-  },
-  "babelMacros": {
-    "twin": {
-      "config": "tailwind.config.js",
-      "preset": "emotion",
-      "debugProp": true,
-      "debugPlugins": false,
-      "debug": false
-    }
+    "start": "run-p start:*",
+    "start:html": "eleventy --serve",
+    "start:css": "postcss src/style.css --o _tmp/style.css --watch",
+    "build": "run-s build:*",
+    "build:html": "eleventy",
+    "build:css": "cross-env NODE_ENV=production postcss src/style.css --o _site/style.css",
+    "lint": "prettier . --write",
+    "clean": "rimraf _tmp _site"
   },
   "repository": {
     "type": "git",
