@@ -9,6 +9,7 @@
     "autoprefixer": "^9.8.5",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
+    "html-minifier": "^4.0.0",
     "postcss-cli": "^7.1.1",
     "rimraf": "^3.0.2",
     "tailwindcss": "^1.6.0",
@@ -23,7 +24,7 @@
     "start:html": "eleventy --serve",
     "start:css": "postcss src/style.css --o _tmp/style.css --watch",
     "build": "run-s build:*",
-    "build:html": "eleventy",
+    "build:html": "cross-env ELEVENTY_PRODUCTION=true eleventy",
     "build:css": "cross-env NODE_ENV=production postcss src/style.css --o _site/style.css",
     "lint": "prettier . --write",
     "clean": "rimraf _tmp _site"
