@@ -6,6 +6,8 @@ module.exports = {
   variants: {
     textTransform: ["responsive", "hover", "focus"],
     fontSize: ["responsive", "hover", "focus"],
+    scale: ["responsive", "hover", "focus", "active"],
+    zIndex: ["responsive", "hover", "focus", "active"],
   },
   plugins: [],
 };

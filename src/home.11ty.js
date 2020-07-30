@@ -13,6 +13,10 @@ const sectionBox = ({ heading, color }) => `
       duration-1000
       hover:text-5xl
       focus:text-5xl
+      hover:z-50
+      focus:z-50
+      transform
+      active:scale-150
       ${color}
       "
 >
