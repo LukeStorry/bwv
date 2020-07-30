@@ -12,10 +12,9 @@ module.exports = {
     },
   },
   variants: {
-    textTransform: ["responsive", "hover", "focus"],
-    fontSize: ["responsive", "hover", "focus"],
-    scale: ["responsive", "hover", "focus", "active"],
-    zIndex: ["responsive", "hover", "focus", "active"],
+    textTransform: ["responsive", "hover", "focus", "motion-safe"],
+    fontSize: ["responsive", "hover", "focus", "motion-safe"],
+    scale: ["responsive", "hover", "focus", "active", "motion-safe"],
     backgroundColor: ["responsive", "hover", "focus", "odd", "even"],
     margin: ["responsive", "hover", "focus", "odd", "even"],
     alignSelf: ["responsive", "odd", "even"],

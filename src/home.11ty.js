@@ -15,8 +15,6 @@ const sectionBox = ({ heading, color }) => `
       motion-safe:transform
       motion-safe:hover:text-5xl
       motion-safe:focus:text-5xl
-      motion-safe:hover:z-50
-      motion-safe:focus:z-50
       motion-safe:active:scale-150
       ${color}
       "
