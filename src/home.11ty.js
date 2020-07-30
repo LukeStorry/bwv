@@ -2,6 +2,7 @@ exports.data = {
   layout: "base",
   title: "Wo-Manifesto",
   permalink: "/",
+  padding: false,
 };
 
 const sectionBox = ({ heading, color }) => `
@@ -9,14 +10,14 @@ const sectionBox = ({ heading, color }) => `
   class="
       flex justify-center items-center
       text-2xl 
-      transition-all
+      motion-safe:transition-all
       duration-1000
-      hover:text-5xl
-      focus:text-5xl
-      hover:z-50
-      focus:z-50
-      transform
-      active:scale-150
+      motion-safe:transform
+      motion-safe:hover:text-5xl
+      motion-safe:focus:text-5xl
+      motion-safe:hover:z-50
+      motion-safe:focus:z-50
+      motion-safe:active:scale-150
       ${color}
       "
 >
