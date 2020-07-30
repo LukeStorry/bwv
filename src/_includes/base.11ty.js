@@ -5,15 +5,15 @@ exports.render = function (data) {
       <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta
-      name="description"
-      content="A mapping of the Bristol Womens' Voice Womanifesto to the Bristol Sustainable Development Goals"
-    />
-      <link rel="stylesheet" href="/style.css"/>
-      <title>${data.title ? data.title + " | " : ""}BWV-SDGs</title>
+        <meta name="description" content="A mapping of the Bristol Womens' Voice Womanifesto to the Bristol Sustainable Development Goals"/>
+        <title>${data.title ? data.title + " | " : ""}BWV-SDGs</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/icon"/>
+        <link rel="stylesheet" href="/style.css"/>
       </head>
-      <body>
-        ${data.content}
+      <body class="bg-gray-800 w-full h-full min-h-screen">
+        <main class="max-w-screen-xl bg-white w-full h-full mx-auto">
+          ${data.content}
+        <main>
       </body>
     </html>
     `;

@@ -18,6 +18,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./_tmp/style.css": "./style.css" });
 
   eleventyConfig.setDataDeepMerge(true);
+  eleventyConfig.addPassthroughCopy({ "./assets/favicon.ico": "favicon.ico" });
 
   return {
     dir: {

@@ -3,6 +3,9 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {},
+  variants: {
+    textTransform: ["responsive", "hover", "focus"],
+    fontSize: ["responsive", "hover", "focus"],
+  },
   plugins: [],
 };

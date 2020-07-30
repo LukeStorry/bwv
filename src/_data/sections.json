@@ -1,0 +1,38 @@
+[
+  {
+    "num": 1,
+    "heading": "Power",
+    "details": "To bring about change in public, private and political institutions in the city to ensure gender balanced leadership and to ensure that the city’s key organisations hear, understand and respond to the needs of all women.",
+    "color": "bg-pink-500"
+  },
+  {
+    "num": 2,
+    "heading": "Health",
+    "details": "To improve the health and well-being of Bristol women of all ages through action and influenced underpinned by research. To raise the profile of women’s health and the importance of taking a gendered approach in all aspects of health promotion and service planning and delivering to secure equal opportunities for women to enjoy food health.",
+    "color": "bg-yellow-500"
+  },
+  {
+    "num": 3,
+    "heading": "Safety",
+    "details": "To make Bristol a city free from any form of gender-based violence, abuse, harassment or exploitation by becoming a Zero Tolerance City with: \n - A greater understanding of gender-based violence. \n - Enhanced specialized and appropriate support services that adequately meet the needs of all women and girls. \n - High quality work on prevention, and education around gender-based violence, gender stereotyping and discrimination. ",
+    "color": "bg-blue-500"
+  },
+  {
+    "num": 4,
+    "heading": "Education",
+    "details": "To ensure that Education fully utilised the potential of girls and women and that the education of all young people, both girls and boys, builds values and behaviours which lead to a more equitable society  ",
+    "color": "bg-orange-500"
+  },
+  {
+    "num": 5,
+    "heading": "Housing",
+    "details": "To ensure that the needs of women in relation to housing and in particular women who are homeless or at risk of homelessness are understood and addressed. Bristol faces a houses crisis and it is having a particular impact on women, forcing some into homelessness. Rising rents, insecure tenancies and lack of affordable housing are also forcing families to leave the area where they have their childcare and family support networks.   The housing needs of women fleeing domestic violence must be prioritized.",
+    "color": "bg-green-500"
+  },
+  {
+    "num": 6,
+    "heading": "Economy",
+    "details": "o enlist the skills, creativity, and experience of women to deliver Bristol’s potential to be a leading European city and to tackle the economic and social exclusion of women on low income in Bristol. ",
+    "color": "bg-red-500"
+  }
+]
