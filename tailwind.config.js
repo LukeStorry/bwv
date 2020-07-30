@@ -4,12 +4,11 @@ module.exports = {
     inset: {
       "0": 0,
       "1/2": "50%",
-      "-16": "-4rem",
+      in: "10%",
     },
     extend: {
-      width: {
-        fit: "fit-content",
-      },
+      width: { fit: "fit-content" },
+      margin: { "-28": "-7rem", "-full": "-100%" },
     },
   },
   variants: {
@@ -21,6 +20,8 @@ module.exports = {
     margin: ["responsive", "hover", "focus", "odd", "even"],
     alignSelf: ["responsive", "odd", "even"],
     textAlign: ["responsive", "odd", "even"],
+    alignItems: ["responsive", "odd", "even"],
+    padding: ["responsive", "odd", "even"],
   },
   plugins: [],
 };

@@ -36,42 +36,57 @@ exports.data = {
   ],
 };
 
+const line = `
+<div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 absolute"></div>
+<div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 fixed"></div>
+`;
+
 const timelineItem = ({ year, heading, description }) => `
   <div class="
-          p-2
+          pt-0
+          p-3
           m-2
           mb-12
-          md:-mb-12
-          md:w-2/5
-          lg:p-6
-        
+          md:-mb-20
+          w-5/6
+          md:w-5/12
+          lg:p-4
 
           md:even:text-right
           md:odd:text-left
           even:bg-blue-300
           odd:bg-blue-400
-          even:self-start
-          odd:self-end
+          md:even:self-start
+          md:odd:self-end
 
+          flex flex-col
+          self-end
+          md:even:items-end
+          md:odd:items-start
+          z-20
           ">
   <p class="
+      z-10
       p-1
+      md:p-2
+      lg:p-3
       w-fit
       rounded
-      -mt-10
-      -mx-4
-      md:-my-10    
-      md:pt-12 
-      md:-pb-0
-      md:-mx-20
-      lg:-mx-24
+      bg-blue-700
+
+      border-2
+      border-blue-200
+
       text-bold
       text-lg
-      tracking-widest
-      bg-blue-700
       text-white
+      tracking-widest
+
+      -mx-20
+      md:-mx-20
+      lg:-mx-28
   ">${year}<p>
-  <h2 class="text-bold text-2xl">${heading}<h2>
+  <h2 class="text-bold text-2xl -mt-8 lg:-mt-12">${heading}</h2>
   <p class="">${description}<p>
   </div>
   `;
@@ -83,12 +98,11 @@ exports.render = ({ timelineItems, timelineColor }) => `
     </svg>
     back
   </a>
-  <h1 class="p-12 pb-0 text-4xl text-center">Timeline</h1>
+  <h1 class="p-12 pb-0 text-4xl text-center">SDG Goals</h1>
 
-  <section id="timeline" class="flex flex-col p-12 w-full">
+  <section id="timeline" class="flex flex-col p-4 md:p-12 w-full mb-48">
 
-
-    <div class="absolute w-2 h-full rotate-90 md:left-1/2 -m-4 bg-blue-700"></div>
+    ${line}
 
     ${timelineItems
       .sort((a, b) => a.year - b.year)

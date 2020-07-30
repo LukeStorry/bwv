@@ -1,4 +1,4 @@
-exports.render = ({ title, color, content, padding=true }) => `
+exports.render = ({ title, color, content, padding = true }) => `
 <!DOCTYPE html>
 <html lang="en">
   <head>
