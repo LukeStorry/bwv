@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ["./src/**/*.11ty.js", "./src/_data/sections.json"],
+  purge: ["./src/**/*.11ty.js"],
   theme: {
     inset: {
       "0": 0,

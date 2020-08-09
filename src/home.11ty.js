@@ -5,6 +5,16 @@ exports.data = {
   padding: false,
 };
 
+// putting colours here so purgecss is happy
+const colors = [
+  "bg-pink-500",
+  "bg-yellow-500",
+  "bg-blue-500",
+  "bg-orange-500",
+  "bg-green-500",
+  "bg-red-500",
+];
+
 const sectionBox = ({ title, color }) => `
 <a href="/${title.toLowerCase()}/"
   class="
