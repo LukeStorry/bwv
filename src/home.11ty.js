@@ -5,8 +5,8 @@ exports.data = {
   padding: false,
 };
 
-const sectionBox = ({ heading, color }) => `
-<a href="/${heading.toLowerCase()}/"
+const sectionBox = ({ title, color }) => `
+<a href="/${title.toLowerCase()}/"
   class="
       flex justify-center items-center
       text-2xl 
@@ -19,10 +19,10 @@ const sectionBox = ({ heading, color }) => `
       ${color}
       "
 >
-  <h2>${heading}</h2> </a
+  <h2>${title}</h2> </a
 >`;
 
-exports.render = ({ title, sections }) => `
+exports.render = ({ sections }) => `
 <div class="
       grid
       grid-cols-1

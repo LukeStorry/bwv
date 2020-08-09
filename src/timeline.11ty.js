@@ -41,7 +41,7 @@ const line = `
 <div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 fixed"></div>
 `;
 
-const timelineItem = ({ year, heading, description }) => `
+const timelineItem = ({ year, title, description }) => `
   <div class="
           pt-0
           p-3
@@ -86,7 +86,7 @@ const timelineItem = ({ year, heading, description }) => `
       md:-mx-20
       lg:-mx-28
   ">${year}<p>
-  <h2 class="text-bold text-2xl -mt-8 lg:-mt-12">${heading}</h2>
+  <h2 class="text-bold text-2xl -mt-8 lg:-mt-12">${title}</h2>
   <p class="">${description}<p>
   </div>
   `;

@@ -5,13 +5,13 @@ exports.data = {
     size: 1,
     alias: "section",
   },
-  permalink: ({ section }) => `/${section.heading.toLowerCase()}/`,
+  permalink: ({ section }) => `/${section.title.toLowerCase()}/`,
 
   eleventyComputed: {
-    title: ({ section }) => section.heading,
+    title: ({ section }) => section.title,
     color: ({ section }) => section.color,
     // colours: ({pagination: { pages } }) => pages.map((p) => p.color),
-    // debug: (d) =>console.log("-------------", d),
+    // debug: ({ section }) =>console.log("-------------", {d:section.details.split("\\n")}),
   },
 };
 
@@ -22,10 +22,11 @@ exports.render = ({ section }) => `
     </svg>
     back
   </a>
-  <h1 class="p-12 text-4xl text-center">${section.heading}</h1>
+  
+  <h1 class="p-12 text-4xl text-center">${section.title}</h1>
 
   ${section.details
-    .split("\n")
+    .split("\\n")
     .map((p) => `<p class="text-lg text-center">${p}</p>`)
     .join("")}
 
