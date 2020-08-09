@@ -1,5 +1,5 @@
-const {fetchData} = require("./fetchData");
+const { fetchData } = require("./fetchData");
 
 module.exports = async function () {
-  return fetchData("Womanifesto" );
+  return fetchData("Womanifesto");
 };

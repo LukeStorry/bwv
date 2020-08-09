@@ -1,39 +1,13 @@
 exports.data = {
   layout: "base",
-  permalink: "/timeline/",
   title: "Timeline",
-  timelineItems: [
-    {
-      year: 2021,
-      heading: "Goal Title",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ante tincidunt, mattis lectus sit amet, fermentum risus. Nam et elit tempus, blandit ante fringilla, laoreet nisi. Cras malesuada tincidunt purus, sit amet scelerisque est tristique non. Integer imperdiet sed dolor ut laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;",
-    },
-    {
-      year: 2025,
-      heading: "Goal Title",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ante tincidunt, mattis lectus sit amet, fermentum risus. Nam et elit tempus, blandit ante fringilla, laoreet nisi. Cras malesuada tincidunt purus, sit amet scelerisque est tristique non. Integer imperdiet sed dolor ut laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;",
-    },
-    {
-      year: 2025,
-      heading: "Goal Title",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ante tincidunt, mattis lectus sit amet, fermentum risus. Nam et elit tempus, blandit ante fringilla, laoreet nisi. Cras malesuada tincidunt purus, sit amet scelerisque est tristique non. Integer imperdiet sed dolor ut laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;",
-    },
-    {
-      year: 2040,
-      heading: "Goal Title",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ante tincidunt, mattis lectus sit amet, fermentum risus. Nam et elit tempus, blandit ante fringilla, laoreet nisi. Cras malesuada tincidunt purus, sit amet scelerisque est tristique non. Integer imperdiet sed dolor ut laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;",
-    },
-    {
-      year: 2030,
-      heading: "Goal Title",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et ante tincidunt, mattis lectus sit amet, fermentum risus. Nam et elit tempus, blandit ante fringilla, laoreet nisi. Cras malesuada tincidunt purus, sit amet scelerisque est tristique non. Integer imperdiet sed dolor ut laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;",
-    },
-  ],
+  permalink: "/timeline/",
+  eleventyComputed: {
+    timelineItems: ({ targets }) => targets,
+    // debug: ({ sdg }) => console.log("sdg:", sdg),
+    // permalink: ({ sdg }) => `/${sdg.id}/`,
+    // title: ({ sdg }) => (sdg ? sdg.id : "SDG"),
+  },
 };
 
 const line = `
@@ -41,7 +15,7 @@ const line = `
 <div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 fixed"></div>
 `;
 
-const timelineItem = ({ year, title, description }) => `
+const timelineItem = ({ year, title }) => `
   <div class="
           pt-0
           p-3
@@ -85,13 +59,14 @@ const timelineItem = ({ year, title, description }) => `
       -mx-20
       md:-mx-20
       lg:-mx-28
-  ">${year}<p>
-  <h2 class="text-bold text-2xl -mt-8 lg:-mt-12">${title}</h2>
-  <p class="">${description}<p>
+      my-20
+
+  ">${year}</p>
+  <p class="text-bold text-2xl -mt-28">${title}</p>
   </div>
   `;
 
-exports.render = ({ timelineItems, timelineColor }) => `
+exports.render = ({ timelineItems }) => `
   <a href="javascript:history.back()">
     <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>

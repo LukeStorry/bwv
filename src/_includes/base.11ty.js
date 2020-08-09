@@ -21,6 +21,7 @@ exports.render = ({ title, color, content, padding = true }) => `
         ">
     <main class="
           max-w-screen-xl
+          min-h-screen
           ${padding ? "p-1 lg:p-4" : ""}
           ${color || "bg-blue-200"}
           w-full
