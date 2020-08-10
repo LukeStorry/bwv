@@ -27,6 +27,7 @@ module.exports = {
     textAlign: ["responsive", "odd", "even"],
     alignItems: ["responsive", "odd", "even"],
     padding: ["responsive", "odd", "even"],
+    backgroundOpacity: ["responsive", "odd", "even"],
   },
   plugins: [],
 };

@@ -9,36 +9,49 @@ exports.data = {
         .map((sdg) =>
           sdg.linkedWomanifesto.map((womanifesto) => ({ sdg, womanifesto }))
         )
-        .flat(),
+        .flat()
+        .concat(
+          sdgs.filter((sdg) => sdg.linkedTargets).map((sdg) => ({ sdg }))
+        ),
     alias: "pageData",
   },
 
   permalink: ({ pageData }) =>
-    `/${pageData.womanifesto.toLowerCase()}/${pageData.sdg.id}/`,
+    pageData.womanifesto
+      ? `/${pageData.womanifesto.toLowerCase()}/${pageData.sdg.id}/`
+      : `/${pageData.sdg.id}/`,
   eleventyComputed: {
-    timelineItems: ({ targets, pageData }) =>
-      targets.filter((t) => pageData.sdg.linkedTargets.includes(t.id)),
+    timelineItems: ({ targets, pageData, color }) =>
+      targets
+        .filter((t) => pageData.sdg.linkedTargets.includes(t.id))
+        .map((i) => ({ color, ...i })),
     title: ({ pageData }) =>
-      `Timeline of SDG targets for ${pageData.womanifesto} and ${pageData.sdg.title}`,
-    debug: ({ timelineItems }) => console.log("timelineItems:", timelineItems),
+      pageData.womanifesto
+        ? `Timeline of SDG targets for ${pageData.womanifesto} and ${pageData.sdg.title}`
+        : `Timeline of SDG targets for ${pageData.sdg.title}`,
+    color: ({ pageData, womanifesto }) =>
+      pageData.womanifesto
+        ? womanifesto.find((w) => w.title === pageData.womanifesto).color
+        : undefined,
+    // debug: ({ color }) => console.log("color:", color),
   },
 };
 
-const timelineItem = ({ year, title }) => `
+const timelineItem = ({ year, title, color }) => `
   <div class="
-          pt-0
-          p-3
+          p-2
+          lg:p-4
           m-2
           my-6
-          md:my-1
           w-5/6
           md:w-5/12
-          lg:p-4
-
+          rounded
+          
+          bg-white
+          odd:bg-opacity-50
+          even:bg-opacity-75
           md:even:text-right
           md:odd:text-left
-          even:bg-blue-300
-          odd:bg-blue-400
           md:even:self-start
           md:odd:self-end
 
@@ -53,24 +66,25 @@ const timelineItem = ({ year, title }) => `
       z-10
       p-1
       md:p-2
-      lg:p-3
       w-fit
       rounded
-      bg-blue-700
+      bg-white
+      ${color}
 
       border-2
-      border-blue-200
+      border-black
 
-      text-bold
+      font-bold
       text-lg
-      text-white
       tracking-widest
-
+      
       -mx-20
       lg:-mx-28
-
+      lg:-mt-4
   ">${year}</p>
-  <p class="text-bold text-xl -mt-8 md:-mt-10 lg:-mt-16">${title}</p>
+
+  <p class="text-lg -mt-10 md:-mt-12 lg:-mt-8 ">${title}</p>
+
   </div>
   `;
 
@@ -82,26 +96,36 @@ exports.render = ({ timelineItems, pageData }) => `
     back
   </a>
 
-  <h1 class="p-12 pb-0 text-4xl text-center">Timeline of SDG Targets</h1>
+  <h1 class="p-12 pb-0 text-2xl md:text-4xl text-center">Timeline of relevant SDG Targets</h1>
 
-  <h2 class="p-12 pb-0 text-2xl text-center">For the intersection of the "<a href="${pageData.womanifesto.toLowerCase()}">${
-  pageData.womanifesto
-}</a>" Womanifesto item and the "${pageData.sdg.title}" SDG goal</h1>
-
-  <div
-  class="w-4 mt-8 left-in md:left-1/2 bg-blue-700 sticky top-0 
+  <h2 class="p-12 pb-0 text-lg md:text-2xl text-center">
   ${
-    timelineItems.length < 6
+    pageData.womanifesto
+      ? `For the intersection of the 
+    <a class="underline" href="/${pageData.womanifesto.toLowerCase()}">${
+          pageData.womanifesto
+        }</a>
+    Womanifesto item and the 
+    <a class="underline" href="/${pageData.sdg.id}">${pageData.sdg.title}</a>
+    SDG goal.`
+      : `For the <a class="underline" href="/${pageData.sdg.id}">${pageData.sdg.title}</a> SDG goal.`
+  }
+  </h2>
+
+  <div class="w-4 mt-8 left-in md:left-1/2 bg-black sticky top-0
+  ${
+    timelineItems.length < 5
       ? "h-screen-part -mb-screen-part"
       : "h-screen -mb-screen"
   }
   "
   ></div>
 
-  <section class="flex flex-col p-4 md:p-12 w-full mb-36">
+  <section class="flex flex-col p-4 md:p-12 w-full mb-56">
     ${timelineItems
       .sort((a, b) => a.year - b.year)
       .map(timelineItem)
       .join("")}
   </section>
+  <p class="text-right">(${timelineItems.length} targets)</p>
 `;
