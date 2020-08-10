@@ -10,7 +10,9 @@ const fetchData = (tableName) =>
     const results = [];
 
     function handlePage(records, fetchNextPage) {
-      records.forEach((record) => results.push({ ...record.fields }));
+      records.forEach((record) =>
+        results.push({ id: record._rawJson.id, ...record.fields })
+      );
       fetchNextPage();
     }
 

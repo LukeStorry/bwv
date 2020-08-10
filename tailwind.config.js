@@ -3,12 +3,18 @@ module.exports = {
   theme: {
     inset: {
       "0": 0,
-      "1/2": "50%",
+      "1/2": "49.4%",
       in: "10%",
     },
     extend: {
       width: { fit: "fit-content" },
-      margin: { "-28": "-7rem", "-full": "-100%" },
+      height: { "screen-part": "70vh" },
+      margin: {
+        "-28": "-7rem",
+        "-full": "-100%",
+        "-screen": "-100vh",
+        "-screen-part": "-70vh",
+      },
     },
   },
   variants: {

@@ -15,7 +15,7 @@ const colors = [
   "bg-red-500",
 ];
 
-const sectionBox = ({ title, color }) => `
+const womanifestoBox = ({ title, color }) => `
 <a href="/${title.toLowerCase()}/"
   class="
       flex justify-center items-center
@@ -32,7 +32,7 @@ const sectionBox = ({ title, color }) => `
   <h2>${title}</h2> </a
 >`;
 
-exports.render = ({ sections }) => `
+exports.render = ({ womanifesto }) => `
 <div class="
       grid
       grid-cols-1
@@ -40,6 +40,6 @@ exports.render = ({ sections }) => `
       h-full
       min-h-screen
       w-full">
-  ${sections.map(sectionBox).join("")}
+  ${womanifesto.map(womanifestoBox).join("")}
 </div>
 `;

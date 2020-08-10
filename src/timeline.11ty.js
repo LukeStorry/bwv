@@ -1,27 +1,36 @@
 exports.data = {
   layout: "base",
   title: "Timeline",
-  permalink: "/timeline/",
+  pagination: {
+    data: "sdgs",
+    size: 1,
+    before: (sdgs) =>
+      sdgs
+        .map((sdg) =>
+          sdg.linkedWomanifesto.map((womanifesto) => ({ sdg, womanifesto }))
+        )
+        .flat(),
+    alias: "pageData",
+  },
+
+  permalink: ({ pageData }) =>
+    `/${pageData.womanifesto.toLowerCase()}/${pageData.sdg.id}/`,
   eleventyComputed: {
-    timelineItems: ({ targets }) => targets,
-    // debug: ({ sdg }) => console.log("sdg:", sdg),
-    // permalink: ({ sdg }) => `/${sdg.id}/`,
-    // title: ({ sdg }) => (sdg ? sdg.id : "SDG"),
+    timelineItems: ({ targets, pageData }) =>
+      targets.filter((t) => pageData.sdg.linkedTargets.includes(t.id)),
+    title: ({ pageData }) =>
+      `Timeline of SDG targets for ${pageData.womanifesto} and ${pageData.sdg.title}`,
+    debug: ({ timelineItems }) => console.log("timelineItems:", timelineItems),
   },
 };
-
-const line = `
-<div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 absolute"></div>
-<div class="w-4 h-full mt-5 -ml-2 left-in md:left-1/2 rounded bg-blue-700 fixed"></div>
-`;
 
 const timelineItem = ({ year, title }) => `
   <div class="
           pt-0
           p-3
           m-2
-          mb-12
-          md:-mb-20
+          my-6
+          md:my-1
           w-5/6
           md:w-5/12
           lg:p-4
@@ -38,6 +47,7 @@ const timelineItem = ({ year, title }) => `
           md:even:items-end
           md:odd:items-start
           z-20
+
           ">
   <p class="
       z-10
@@ -57,28 +67,38 @@ const timelineItem = ({ year, title }) => `
       tracking-widest
 
       -mx-20
-      md:-mx-20
       lg:-mx-28
-      my-20
 
   ">${year}</p>
-  <p class="text-bold text-2xl -mt-28">${title}</p>
+  <p class="text-bold text-xl -mt-8 md:-mt-10 lg:-mt-16">${title}</p>
   </div>
   `;
 
-exports.render = ({ timelineItems }) => `
+exports.render = ({ timelineItems, pageData }) => `
   <a href="javascript:history.back()">
     <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>
     </svg>
     back
   </a>
-  <h1 class="p-12 pb-0 text-4xl text-center">SDG Goals</h1>
 
-  <section id="timeline" class="flex flex-col p-4 md:p-12 w-full mb-48">
+  <h1 class="p-12 pb-0 text-4xl text-center">Timeline of SDG Targets</h1>
 
-    ${line}
+  <h2 class="p-12 pb-0 text-2xl text-center">For the intersection of the "<a href="${pageData.womanifesto.toLowerCase()}">${
+  pageData.womanifesto
+}</a>" Womanifesto item and the "${pageData.sdg.title}" SDG goal</h1>
 
+  <div
+  class="w-4 mt-8 left-in md:left-1/2 rounded bg-blue-700 sticky top-0
+  ${
+    timelineItems.length > 6
+      ? "h-screen -mb-screen"
+      : "h-screen-part -mb-screen-part"
+  }
+  "
+  ></div>
+
+  <section class="flex flex-col p-4 md:p-12 w-full mb-12">
     ${timelineItems
       .sort((a, b) => a.year - b.year)
       .map(timelineItem)

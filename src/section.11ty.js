@@ -1,26 +1,22 @@
 exports.data = {
   layout: "base",
   pagination: {
-    data: "sections",
+    data: "womanifesto",
     size: 1,
-    alias: "section",
+    alias: "womanifestoItem",
   },
-  permalink: ({ section }) => `/${section.title.toLowerCase()}/`,
+  permalink: ({ womanifestoItem }) =>
+    `/${womanifestoItem.title.toLowerCase()}/`,
 
   eleventyComputed: {
-    title: ({ section }) => section.title,
-    color: ({ section }) => section.color,
-    linkedSdgs: ({ section }) =>
-      section.linkedSdgs
-        .filter((value, index, self) => self.indexOf(value) === index)
-        .sort(),
-    // colours: ({pagination: { pages } }) => pages.map((p) => p.color),
-    debug: ({ section }) => console.log("-------------", section),
+    title: ({ womanifestoItem }) => womanifestoItem.title,
+    color: ({ womanifestoItem }) => womanifestoItem.color,
+    linkedSdgs: ({ womanifestoItem }) => womanifestoItem.linkedSdgs,
+    // debug: ({ womanifestoItem, targets }) => console.log("womanifestoItem", womanifestoItem),
   },
 };
 
-
-exports.render = ({ section, linkedSdgs }) => `
+exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
   <a href="/">
     <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>
@@ -28,11 +24,11 @@ exports.render = ({ section, linkedSdgs }) => `
     back
   </a>
 
-  <h1 class="p-12 text-4xl text-center">${section.title}</h1>
+  <h1 class="p-12 text-4xl text-center">${womanifestoItem.title}</h1>
 
-  ${section.details
+  ${womanifestoItem.details
     .split("\\n")
-    .map((p) => `<p class="p-4 text-lg text-center">${p}</p>`)
+    .map((p) => `<p class="p-4 text-xl text-center">${p}</p>`)
     .join("")}
 
   <div
@@ -47,8 +43,8 @@ exports.render = ({ section, linkedSdgs }) => `
   >
     ${linkedSdgs
       .map(
-        (a) => `
-    <a href="/timeline"
+        (sdg) => `
+    <a href="${sdgs.find((s) => s.title === sdg).id}"
         class="
           border
           border-white
@@ -60,7 +56,7 @@ exports.render = ({ section, linkedSdgs }) => `
           p-10
           text-center
           "
-    >${a}</a>
+    >${sdg}</a>
     `
       )
       .join("")}
