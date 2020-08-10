@@ -89,8 +89,12 @@ exports.render = ({ timelineItems, pageData }) => `
 }</a>" Womanifesto item and the "${pageData.sdg.title}" SDG goal</h1>
 
   <div
-  class="w-4 mt-8 left-in md:left-1/2 bg-blue-700 sticky top-0 h-screen -mb-screen
-  ${timelineItems.length < 6 ? "md:h-screen-part md:-mb-screen-part" : ""}
+  class="w-4 mt-8 left-in md:left-1/2 bg-blue-700 sticky top-0 
+  ${
+    timelineItems.length < 6
+      ? "h-screen-part -mb-screen-part"
+      : "h-screen -mb-screen"
+  }
   "
   ></div>
 
