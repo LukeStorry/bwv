@@ -98,7 +98,7 @@ exports.render = ({ timelineItems, pageData }) => `
   "
   ></div>
 
-  <section class="flex flex-col p-4 md:p-12 w-full mb-12">
+  <section class="flex flex-col p-4 md:p-12 w-full mb-24">
     ${timelineItems
       .sort((a, b) => a.year - b.year)
       .map(timelineItem)
