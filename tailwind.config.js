@@ -8,12 +8,12 @@ module.exports = {
     },
     extend: {
       width: { fit: "fit-content" },
-      height: { "screen-part": "80vh" },
+      height: { "screen-part": "70vh" },
       margin: {
         "-28": "-7rem",
         "-full": "-100%",
         "-screen": "-100vh",
-        "-screen-part": "-80vh",
+        "-screen-part": "-70vh",
       },
     },
   },
