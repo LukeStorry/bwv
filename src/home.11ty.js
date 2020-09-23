@@ -18,8 +18,8 @@ const colors = [
 exports.render = ({ womanifesto }) => `
 <div class="h-screen">
   <div class="bg-white text-center p-2">
-    <h1 class="text-4xl">BWV Womanifesto SDG Mapping</h1> 
-    <a class="underline" href="about/">More Info Here</a>
+    <h1 class="text-xl sm:text-3xl">BWV Womanifesto SDG Mapping</h1> 
+    <a class=" text-sm underline" href="about/">More Info Here</a>
   </div>
   
   <div class="
