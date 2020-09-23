@@ -1,4 +1,4 @@
-exports.render = ({ title, color, content, padding = true }) => `
+exports.render = ({ title, content, color = "bg-blue-200", padding = true }) => `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +23,7 @@ exports.render = ({ title, color, content, padding = true }) => `
           max-w-screen-xl
           min-h-screen
           ${padding ? "p-1 lg:p-4" : ""}
-          ${color || "bg-blue-200"}
+          ${color}
           w-full
           h-full
           mx-auto

@@ -1,4 +1,5 @@
 const htmlmin = require("html-minifier");
+const md = require("markdown-it")();
 
 module.exports = function (eleventyConfig) {
   eleventyConfig.addTransform("htmlmin", (content, outputPath) =>
@@ -12,6 +13,8 @@ module.exports = function (eleventyConfig) {
         })
       : content
   );
+
+  eleventyConfig.addShortcode("markdown", (data) => md.render(data));
 
   // watch and copy the postcss stuff for dev
   eleventyConfig.addWatchTarget("./_tmp/style.css");

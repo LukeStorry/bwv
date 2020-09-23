@@ -1,6 +1,6 @@
 exports.data = {
   layout: "base",
-  title: "Wo-Manifesto",
+  title: "Wo-Manifesto | BWV Womanifesto SDG Mapping",
   permalink: "/",
   padding: false,
 };
@@ -15,31 +15,35 @@ const colors = [
   "bg-red-500",
 ];
 
-const womanifestoBox = ({ title, color }) => `
-<a href="/${title.toLowerCase()}/"
-  class="
-      flex justify-center items-center
-      text-2xl 
-      motion-safe:transition-all
-      duration-1000
-      motion-safe:transform
-      motion-safe:hover:text-5xl
-      motion-safe:focus:text-5xl
-      motion-safe:active:scale-150
-      ${color}
-      "
->
-  <h2>${title}</h2> </a
->`;
-
 exports.render = ({ womanifesto }) => `
-<div class="
+<div class="h-screen">
+  <div class="bg-white text-center p-2">
+    <h1 class="text-4xl">BWV Womanifesto SDG Mapping</h1> 
+    <a class="underline" href="about/">More Info Here</a>
+  </div>
+  
+  <div class="
       grid
       grid-cols-1
       sm:grid-cols-2
       h-full
-      min-h-screen
       w-full">
-  ${womanifesto.map(womanifestoBox).join("")}
+    ${womanifesto.map(({ title, color }) => `
+    <a href="/${title.toLowerCase()}/"
+      class="
+          flex justify-center items-center
+          text-2xl 
+          motion-safe:transition-all
+          duration-1000
+          motion-safe:transform
+          motion-safe:hover:text-5xl
+          motion-safe:focus:text-5xl
+          motion-safe:active:scale-150
+          ${color}
+          "
+    >
+      <h2>${title}</h2> </a
+    >`).join("")}
+  </div>
 </div>
 `;

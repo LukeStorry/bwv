@@ -1,6 +1,5 @@
 exports.data = {
   layout: "base",
-  title: "Timeline",
   pagination: {
     data: "sdgs",
     size: 1,

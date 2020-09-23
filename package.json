@@ -13,6 +13,7 @@
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "html-minifier": "^4.0.0",
+    "markdown-it": "^11.0.1",
     "postcss-cli": "^7.1.1",
     "prettier": "^2.0.5",
     "rimraf": "^3.0.2",
