@@ -1,4 +1,9 @@
-exports.render = ({ title, content, color = "bg-blue-200", padding = true }) => `
+exports.render = ({
+  title,
+  content,
+  color = "bg-blue-200",
+  padding = true,
+}) => `
 <!DOCTYPE html>
 <html lang="en">
   <head>

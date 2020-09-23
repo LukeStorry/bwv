@@ -9,7 +9,8 @@ exports.data = {
     `/${womanifestoItem.title.toLowerCase()}/`,
 
   eleventyComputed: {
-    title: ({ womanifestoItem }) => womanifestoItem.title + " | BWV Womanifesto SDG Mapping",
+    title: ({ womanifestoItem }) =>
+      womanifestoItem.title + " | BWV Womanifesto SDG Mapping",
     color: ({ womanifestoItem }) => womanifestoItem.color,
     linkedSdgs: ({ womanifestoItem }) => womanifestoItem.linkedSdgs,
     // debug: ({ womanifestoItem, targets }) => console.log("womanifestoItem", womanifestoItem),

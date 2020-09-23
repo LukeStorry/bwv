@@ -28,7 +28,9 @@ exports.render = ({ womanifesto }) => `
       sm:grid-cols-2
       h-full
       w-full">
-    ${womanifesto.map(({ title, color }) => `
+    ${womanifesto
+      .map(
+        ({ title, color }) => `
     <a href="/${title.toLowerCase()}/"
       class="
           flex justify-center items-center
@@ -43,7 +45,9 @@ exports.render = ({ womanifesto }) => `
           "
     >
       <h2>${title}</h2> </a
-    >`).join("")}
+    >`
+      )
+      .join("")}
   </div>
 </div>
 `;
