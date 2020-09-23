@@ -14,7 +14,7 @@ exports.render = function ({ info }) {
 back
 </a>
 
-<h1 class="p-12 text-4xl text-center">BWV Womanifesto SDG Mapping - About</h1>
+<h1 class="p-12 text-3xl text-center">About</h1>
 <div class="px-12 lg:px-24 text-lg space-y-4">
   ${this.markdown(info.find((i) => i.key === "about").text)}
 </div>

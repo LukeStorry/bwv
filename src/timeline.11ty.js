@@ -53,12 +53,12 @@ exports.render = function ({ timelineItems, pageData }) {
     back
   </a>
 
-  <h1 class="p-12 pb-0 text-2xl md:text-4xl text-center">Timeline of relevant SDG Targets</h1>
+  <h1 class="p-8 pb-0 text-2xl md:text-4xl text-center">Timeline</h1>
 
-  <h2 class="p-12 pb-0 text-lg md:text-2xl text-center">
+  <h2 class="px-12 text-lg md:text-xl text-center">
   ${
     pageData.womanifesto
-      ? `For the intersection of the 
+      ? `of relevant SDG Targets for the intersection of the 
     <a class="underline" href="/${pageData.womanifesto.toLowerCase()}">${
           pageData.womanifesto
         }</a>
