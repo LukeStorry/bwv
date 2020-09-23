@@ -14,7 +14,7 @@ module.exports = function (eleventyConfig) {
       : content
   );
 
-  eleventyConfig.addShortcode("markdown", (data) => md.render(data));
+  eleventyConfig.addShortcode("markdown", (s) => md.render(s));
 
   // watch and copy the postcss stuff for dev
   eleventyConfig.addWatchTarget("./_tmp/style.css");

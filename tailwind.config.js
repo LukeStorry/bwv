@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     inset: {
       "0": 0,
-      "1/2": "49.4%",
-      in: "10%",
+      "1/2": "49%",
+      in: "5%",
     },
     extend: {
       width: { fit: "fit-content" },
@@ -21,13 +21,10 @@ module.exports = {
     textTransform: ["responsive", "hover", "focus", "motion-safe"],
     fontSize: ["responsive", "hover", "focus", "motion-safe"],
     scale: ["responsive", "hover", "focus", "active", "motion-safe"],
-    backgroundColor: ["responsive", "hover", "focus", "odd", "even"],
-    margin: ["responsive", "hover", "focus", "odd", "even"],
-    alignSelf: ["responsive", "odd", "even"],
-    textAlign: ["responsive", "odd", "even"],
-    alignItems: ["responsive", "odd", "even"],
-    padding: ["responsive", "odd", "even"],
-    backgroundOpacity: ["responsive", "odd", "even"],
   },
   plugins: [],
+  future: {
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
+  },
 };

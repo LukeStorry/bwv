@@ -20,10 +20,18 @@ exports.data = {
       ? `/${pageData.womanifesto.toLowerCase()}/${pageData.sdg.id}/`
       : `/${pageData.sdg.id}/`,
   eleventyComputed: {
-    timelineItems: ({ targets, pageData, color }) =>
+    timelineItems: ({ targets, pageData, color, comments }) =>
       targets
         .filter((t) => pageData.sdg.linkedTargets.includes(t.id))
-        .map((i) => ({ color, ...i })),
+        .sort((a, b) => a.year - b.year)
+        .map((target, i) => ({
+          even: i % 2 == 0,
+          comment: target.linkedComment
+            ? comments.find((c) => target.linkedComment[0] == c.id).text
+            : undefined,
+          color,
+          ...target,
+        })),
     title: ({ pageData }) =>
       pageData.womanifesto
         ? `Timeline of SDG targets for ${pageData.womanifesto} and ${pageData.sdg.title}`
@@ -32,62 +40,12 @@ exports.data = {
       pageData.womanifesto
         ? womanifesto.find((w) => w.title === pageData.womanifesto).color
         : undefined,
-    // debug: ({ color }) => console.log("color:", color),
+    // debug: ({ timelineItems }) => console.log("item", timelineItems[0]),
   },
 };
 
-const timelineItem = ({ year, title, color }) => `
-  <div class="
-          p-2
-          lg:p-4
-          m-2
-          my-6
-          w-5/6
-          md:w-5/12
-          rounded
-          
-          bg-white
-          odd:bg-opacity-50
-          even:bg-opacity-75
-          md:even:text-right
-          md:odd:text-left
-          md:even:self-start
-          md:odd:self-end
-
-          flex flex-col
-          self-end
-          md:even:items-end
-          md:odd:items-start
-          z-20
-
-          ">
-  <p class="
-      z-10
-      p-1
-      md:p-2
-      w-fit
-      rounded
-      bg-white
-      ${color}
-
-      border-2
-      border-black
-
-      font-bold
-      text-lg
-      tracking-widest
-      
-      -mx-20
-      lg:-mx-28
-      lg:-mt-4
-  ">${year}</p>
-
-  <p class="text-lg -mt-10 md:-mt-12 lg:-mt-8 ">${title}</p>
-
-  </div>
-  `;
-
-exports.render = ({ timelineItems, pageData }) => `
+exports.render = function ({ timelineItems, pageData }) {
+  return `
   <a href="javascript:history.back()">
     <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>
@@ -120,11 +78,47 @@ exports.render = ({ timelineItems, pageData }) => `
   "
   ></div>
 
-  <section class="flex flex-col p-4 md:p-12 w-full mb-56">
+  <section class="p-2 md:p-4 lg:p-16 w-full mb-56 flex flex-col">
+
     ${timelineItems
-      .sort((a, b) => a.year - b.year)
-      .map(timelineItem)
+      .map(
+        ({ year, title, color, even, comment = "" }) =>
+          `
+          <div class="
+            flex md:w-1/2 md:mx-6 mb-8
+            ${comment ? "md:-mb-16" : "md:-mb-0"}
+            ${even ? "md:flex-row-reverse" : "md:flex-row"}
+            ${even ? "md:mr-auto" : "md:ml-auto"}
+          ">
+
+            <p class="
+              z-10 px-1 h-8 mx-auto mt-4
+              bg-white ${color}
+              rounded border-2 border-black
+              font-bold text-lg tracking-widest
+            ">${year}</p>
+
+            <div class="
+            bg-white
+              p-4 mx-2 md:mx-4
+              bg-opacity-75
+              ${even ? "md:text-right" : "md:text-left"}
+            ">
+
+              <p class="text-lg">${title}</p>
+              <div class="comment ${
+                color || "bg-blue-200"
+              } bg-opacity-25 p-2 mt-4 space-y-4">
+                ${this.markdown(comment)}
+              </div>
+
+            </div>
+
+          </div>
+    `
+      )
       .join("")}
   </section>
   <p class="text-right">(${timelineItems.length} targets)</p>
 `;
+};
