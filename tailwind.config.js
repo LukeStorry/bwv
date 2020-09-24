@@ -21,7 +21,6 @@ module.exports = {
     textTransform: ["responsive", "hover", "focus", "motion-safe"],
     fontSize: ["responsive", "hover", "focus", "motion-safe"],
     scale: ["responsive", "hover", "focus", "active", "motion-safe"],
-    backgroundColor: ['responsive', 'hover', 'focus', 'visited'],
   },
   plugins: [],
   future: {

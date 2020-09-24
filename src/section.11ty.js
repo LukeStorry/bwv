@@ -48,8 +48,6 @@ exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
           flex justify-center items-center
           text-center text-xl
           p-10
-          bg-opacity-25
-          visited:bg-gray-100
           hover:bg-white
           "
     >${sdg}</a>
