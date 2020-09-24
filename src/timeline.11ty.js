@@ -58,14 +58,14 @@ exports.render = function ({ timelineItems, pageData }) {
   <h2 class="px-12 text-lg md:text-xl text-center">
   ${
     pageData.womanifesto
-      ? `of relevant SDG Targets for the intersection of the 
-    <a class="underline" href="/${pageData.womanifesto.toLowerCase()}">${
-          pageData.womanifesto
-        }</a>
-    Womanifesto item and the 
-    <a class="underline" href="/${pageData.sdg.id}">${pageData.sdg.title}</a>
-    SDG goal.`
-      : `For the <a class="underline" href="/${pageData.sdg.id}">${pageData.sdg.title}</a> SDG goal.`
+      ? `of relevant SDG Targets for the intersection of <br> the 
+          <a class="underline" href="/${pageData.womanifesto.toLowerCase()}">
+            ${pageData.womanifesto}
+          </a> Womanifesto item and the
+          <a class="underline" href="/${pageData.sdg.id}">
+            ${pageData.sdg.title}
+          </a> SDG goal.`
+      : `of relevant SDG Targets for the <a class="underline" href="/${pageData.sdg.id}">${pageData.sdg.title}</a> SDG goal.`
   }
   </h2>
 
@@ -74,9 +74,7 @@ exports.render = function ({ timelineItems, pageData }) {
     timelineItems.length < 5
       ? "h-screen-part -mb-screen-part"
       : "h-screen -mb-screen"
-  }
-  "
-  ></div>
+  }"></div>
 
   <section class="p-2 md:p-4 lg:p-16 w-full mb-56 flex flex-col">
 

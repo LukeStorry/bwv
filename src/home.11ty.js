@@ -16,33 +16,23 @@ const colors = [
 ];
 
 exports.render = ({ womanifesto }) => `
-<div class="h-screen">
+<div class="h-screen flex flex-col">
   <div class="bg-white text-center p-2">
     <h1 class="text-xl sm:text-3xl">BWV Womanifesto SDG Mapping</h1> 
-    <a class=" text-sm underline" href="about/">More Info Here</a>
+    <a class="text-sm underline" href="about/">More Info Here</a>
   </div>
   
-  <div class="
-      grid
-      grid-cols-1
-      sm:grid-cols-2
-      h-full
-      w-full">
+  <div class="grid grid-cols-1 sm:grid-cols-2 flex-1 w-full">
     ${womanifesto
       .map(
         ({ title, color }) => `
     <a href="/${title.toLowerCase()}/"
-      class="
-          flex justify-center items-center
-          text-2xl 
-          motion-safe:transition-all
-          duration-1000
-          motion-safe:transform
-          motion-safe:hover:text-5xl
-          motion-safe:focus:text-5xl
-          motion-safe:active:scale-150
-          ${color}
-          "
+      class="flex justify-center items-center text-2xl ${color}
+      motion-safe:transition-all duration-1000
+      motion-safe:transform
+      motion-safe:hover:text-5xl
+      motion-safe:focus:text-5xl
+      motion-safe:active:scale-150"
     >
       <h2>${title}</h2> </a
     >`
