@@ -35,11 +35,8 @@ exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
   <div
     class="
       p-12
-      grid
-      grid-cols-1
-      sm:grid-cols-2
-      sm:mx-24
-      lg:mx-48
+      sm:mx-24 lg:mx-48
+      grid grid-cols-1 sm:grid-cols-2
       "
   >
     ${linkedSdgs
@@ -47,15 +44,13 @@ exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
         (sdg) => `
     <a href="${sdgs.find((s) => s.title === sdg).id}"
         class="
-          border
-          border-white
-          flex
-          justify-center
-          items-center
-          text-xl
-          hover:bg-gray-300
+          border border-white
+          flex justify-center items-center
+          text-center text-xl
           p-10
-          text-center
+          bg-opacity-25
+          visited:bg-gray-100
+          hover:bg-white
           "
     >${sdg}</a>
     `
