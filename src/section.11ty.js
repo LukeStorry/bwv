@@ -54,4 +54,6 @@ exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
     `
       )
       .join("")}
+      
+  </div>
 `;

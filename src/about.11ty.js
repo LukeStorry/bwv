@@ -17,6 +17,13 @@ back
 <h1 class="p-12 text-3xl text-center">About</h1>
 <div class="px-12 lg:px-24 text-lg space-y-4">
   ${this.markdown(info.find((i) => i.key === "about").text)}
+  
+
+  <p class="pt-8 underline">
+    <a href="../actions/">See List of Actions</a>
+  </p>
+
 </div>
+
 `;
 };

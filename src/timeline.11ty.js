@@ -80,9 +80,10 @@ exports.render = function ({ timelineItems, pageData }) {
 
     ${timelineItems
       .map(
-        ({ year, title, color, even, comment = "" }) =>
+        ({ id, year, title, color, even, comment = "" }) =>
           `
-          <div class="
+          <div id="${id}"
+          class="
             flex md:w-1/2 md:mx-6 mb-8
             ${comment ? "md:-mb-16" : "md:-mb-0"}
             ${even ? "md:flex-row-reverse" : "md:flex-row"}
@@ -104,9 +105,9 @@ exports.render = function ({ timelineItems, pageData }) {
             ">
 
               <p class="text-lg">${title}</p>
-              <div class="comment ${
-                color || "bg-blue-200"
-              } bg-opacity-25 p-2 mt-4 space-y-4">
+              <div class="comment ${color || "bg-blue-200"}
+                bg-opacity-25 p-2 mt-4 space-y-4
+                ">
                 ${this.markdown(comment)}
               </div>
 
