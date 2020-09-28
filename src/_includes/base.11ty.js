@@ -13,7 +13,7 @@ exports.render = ({
       name="description"
       content="A mapping of the Bristol Womens' Voice Womanifesto to the Bristol Sustainable Development Goals"
     />
-    <title>${title ? title + " | " : ""}BWV-SDGs</title>
+    <title>${title ? title + " | " : ""}BWV Womanifesto SDG Mapping</title>
     <link rel="shortcut icon" href="/favicon.ico" type="image/icon" />
     <link rel="stylesheet" href="/style.css" />
   </head>

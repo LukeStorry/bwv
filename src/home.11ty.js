@@ -1,6 +1,6 @@
 exports.data = {
   layout: "base",
-  title: "Wo-Manifesto | BWV Womanifesto SDG Mapping",
+  title: "Wo-Manifesto",
   permalink: "/",
   padding: false,
 };

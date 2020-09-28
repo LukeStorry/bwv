@@ -1,7 +1,7 @@
 exports.data = {
   layout: "base",
   permalink: "/actions/",
-  title: "Actions | BWV Womanifesto SDG Mapping",
+  title: "Actions",
   eleventyComputed: {
     actions: ({ comments, targets }) =>
       comments

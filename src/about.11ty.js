@@ -1,6 +1,6 @@
 exports.data = {
   layout: "base",
-  title: "About | BWV Womanifesto SDG Mapping",
+  title: "About",
   permalink: "/about/",
   color: "bg-white",
 };
