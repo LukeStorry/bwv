@@ -76,13 +76,13 @@ exports.render = function ({ timelineItems, pageData }) {
       : "h-screen -mb-screen"
   }"></div>
 
-  <section class="p-2 md:p-4 lg:p-16 w-full mb-56 flex flex-col">
+  <section class="sm:p-2 md:p-4 lg:p-16 w-full mb-56 flex flex-col">
 
     ${timelineItems
       .map(
-        ({ id, year, title, color, even, comment = "" }) =>
+        ({ year, title, color, even, comment = "" }) =>
           `
-          <div id="${id}"
+          <div id="${year}-${this.slug(title).substring(0, 20)}"
           class="
             flex md:w-1/2 md:mx-6 mb-8
             ${comment ? "md:-mb-16" : "md:-mb-0"}

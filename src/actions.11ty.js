@@ -38,22 +38,24 @@ exports.render = function ({ actions }) {
   >
     ${actions
       .map(
-        (action) => `<div class="
+        ({ text, linkedTargets }) => `<div class="
           flex-1 p-4 m-4
           border border-black
           bg-white bg-opacity-25
           ">
-            ${this.markdown(action.text)}
+            ${this.markdown(text)}
 
-            <div class="mt-4 flex">
-              ${action.linkedTargets
+            <div class="mt-4 grid
+               ${linkedTargets.length > 2 ? "md:grid-cols-2" : "grid-cols-1"}">
+              ${linkedTargets
                 .map(
-                  (t) => `<a 
-                    href="../${this.slug(t.linkedWomanifestoTitle)}/${
-                    t.linkedSdgId
-                  }/#${t.id}"
+                  (target) => `
+                  <a
+                    href="../${this.slug(target.linkedWomanifestoTitle)}/${
+                    target.linkedSdgId
+                  }/#${target.year}-${this.slug(target.title).substring(0, 20)}"
                     class="truncate rounded bg-blue-400 text-xs p-1 m-1">
-                      ${t.year}: ${t.title}
+                      ${target.year}: ${target.title}
                 </a>
                 `
                 )
