@@ -39,14 +39,13 @@ exports.render = function ({ actions }) {
     ${actions
       .map(
         ({ text, linkedTargets }) => `<div class="
-          flex-1 p-4 m-4
-          border border-black
-          bg-white bg-opacity-25
+          flex-1 p-4 m-4 rounded
+          bg-white bg-opacity-50
           ">
             ${this.markdown(text)}
 
             <div class="mt-4 grid
-               ${linkedTargets.length > 2 ? "md:grid-cols-2" : "grid-cols-1"}">
+                ${linkedTargets.length > 2 ? "md:grid-cols-2" : "grid-cols-1"}">
               ${linkedTargets
                 .map(
                   (target) => `
@@ -54,7 +53,7 @@ exports.render = function ({ actions }) {
                     href="../${this.slug(target.linkedWomanifestoTitle)}/${
                     target.linkedSdgId
                   }/#${target.year}-${this.slug(target.title).substring(0, 20)}"
-                    class="truncate rounded bg-blue-400 text-xs p-1 m-1">
+                    class="truncate rounded bg-blue-300 hover:bg-blue-500 text-xs p-1 m-1">
                       ${target.year}: ${target.title}
                 </a>
                 `
