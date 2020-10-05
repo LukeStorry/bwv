@@ -42,7 +42,9 @@ exports.render = function ({ actions }) {
           flex-1 p-4 m-4 rounded
           bg-white bg-opacity-50
           ">
-            ${this.markdown(text)}
+            <div class="comment">
+              ${this.markdown(text)}
+            </div>
 
             <div class="mt-4 grid
                 ${linkedTargets.length > 2 ? "md:grid-cols-2" : "grid-cols-1"}">
