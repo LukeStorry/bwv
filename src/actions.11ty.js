@@ -30,7 +30,7 @@ exports.render = function ({ actions }) {
   </a>
 
   <h1 class="p-8 pb-0 text-2xl md:text-4xl text-center">
-    Reccomended Actions
+    Recommended Actions
   </h1>
 
 
