@@ -18,7 +18,7 @@ exports.data = {
 
 exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
   <a href="/">
-    <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="inline w-4 pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>
     </svg>
     back
@@ -32,23 +32,13 @@ exports.render = ({ womanifestoItem, linkedSdgs, sdgs }) => `
     .join("")}
 
   <div
-    class="
-      p-12
-      sm:mx-24 lg:mx-48
-      grid grid-cols-1 sm:grid-cols-2
-      "
+    class=" sm:mx-24 lg:mx-48 sm:grid-cols-2 grid grid-cols-1 p-12"
   >
     ${linkedSdgs
       .map(
         (sdg) => `
     <a href="${sdgs.find((s) => s.title === sdg).id}"
-        class="
-          border border-white
-          flex justify-center items-center
-          text-center text-xl
-          p-10
-          hover:bg-white
-          "
+        class=" hover:bg-white flex items-center justify-center p-10 text-xl text-center border border-white"
     >${sdg}</a>
     `
       )

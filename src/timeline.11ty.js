@@ -47,15 +47,15 @@ exports.data = {
 exports.render = function ({ timelineItems, pageData }) {
   return `
   <a href="javascript:history.back()">
-    <svg class="w-4 inline pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="inline w-4 pb-1" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20.3284 11.0001V13.0001L7.50011 13.0001L10.7426 16.2426L9.32842 17.6568L3.67157 12L9.32842 6.34314L10.7426 7.75735L7.49988 11.0001L20.3284 11.0001Z" fill="currentColor"/>
     </svg>
     back
   </a>
 
-  <h1 class="p-8 pb-0 text-2xl md:text-4xl text-center">Timeline</h1>
+  <h1 class="md:text-4xl p-8 pb-0 text-2xl text-center">Timeline</h1>
 
-  <h2 class="px-12 text-lg md:text-xl text-center">
+  <h2 class="md:text-xl px-12 text-lg text-center">
   ${
     pageData.womanifesto
       ? `of relevant SDG Targets for the intersection of <br> the 
@@ -69,14 +69,14 @@ exports.render = function ({ timelineItems, pageData }) {
   }
   </h2>
 
-  <div class="w-4 mt-8 left-in md:left-1/2 bg-black sticky top-0
+  <div class="left-in md:left-1/2 sticky top-0 w-4 mt-8 bg-black
   ${
     timelineItems.length < 5
       ? "h-screen-part -mb-screen-part"
       : "h-screen -mb-screen"
   }"></div>
 
-  <section class="sm:p-2 md:p-4 lg:p-16 w-full mb-56 flex flex-col">
+  <section class="sm:p-2 md:p-4 lg:p-16 flex flex-col w-full mb-56">
 
     ${timelineItems
       .map(
@@ -84,17 +84,13 @@ exports.render = function ({ timelineItems, pageData }) {
           `
           <div id="${year}-${this.slug(title).substring(0, 20)}"
           class="
-            flex md:w-1/2 md:mx-6 mb-8
+            md:w-1/2 md:mx-6 flex mb-8
             ${comment ? "md:-mb-16" : "md:-mb-0"}
             ${even ? "md:flex-row-reverse" : "md:flex-row"}
             ${even ? "md:mr-auto" : "md:ml-auto"}
           ">
 
-            <p class="
-              z-10 px-1 h-8 mx-auto mt-4
-              bg-white ${color}
-              rounded border-2 border-black
-              font-bold text-lg tracking-widest
+            <p class=" z-10 h-8 px-1 mx-auto mt-4 text-lg font-bold tracking-widest bg-white ${color} border-2 border-black rounded"
             ">${year}</p>
 
             <div class="
@@ -105,9 +101,7 @@ exports.render = function ({ timelineItems, pageData }) {
             ">
 
               <p class="text-lg">${title}</p>
-              <div class="comment ${color || "bg-blue-200"}
-                bg-opacity-25 p-2 mt-4 space-y-4
-                ">
+              <div class="comment ${color || "bg-blue-200"} p-2 mt-4 space-y-4 bg-opacity-25">
                 ${this.markdown(comment)}
               </div>
 

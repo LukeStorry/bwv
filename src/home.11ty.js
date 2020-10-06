@@ -16,13 +16,13 @@ const colors = [
 ];
 
 exports.render = ({ womanifesto }) => `
-<div class="h-screen flex flex-col">
-  <div class="bg-white text-center p-2">
-    <h1 class="text-xl sm:text-3xl">BWV Womanifesto SDG Mapping</h1> 
+<div class="flex flex-col h-screen">
+  <div class="p-2 text-center bg-white">
+    <h1 class="sm:text-3xl text-xl">BWV Womanifesto SDG Mapping</h1> 
     <a class="text-sm underline" href="about/">More Info Here</a>
   </div>
   
-  <div class="grid grid-cols-1 sm:grid-cols-2 flex-1 w-full">
+  <div class="sm:grid-cols-2 grid flex-1 w-full grid-cols-1">
     ${womanifesto
       .map(
         ({ title, color }) => `

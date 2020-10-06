@@ -18,21 +18,12 @@ exports.render = ({
     <link rel="stylesheet" href="/style.css" />
   </head>
 
-  <body class="
-        bg-gray-800
-        w-full
-        h-full
-        min-h-screen
-        ">
+  <body class=" w-full h-full min-h-screen bg-gray-800">
     <main class="
-          max-w-screen-xl
-          min-h-screen
-          ${padding ? "p-1 lg:p-4" : ""}
-          ${color}
-          w-full
-          h-full
-          mx-auto
-          ">
+    w-full h-full max-w-screen-xl min-h-screen mx-auto
+    ${padding ? "p-1 lg:p-4" : ""}
+    ${color}
+   ">
       ${content}
     </main>
   </body>
