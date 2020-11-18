@@ -90,8 +90,9 @@ exports.render = function ({ timelineItems, pageData }) {
             ${even ? "md:mr-auto" : "md:ml-auto"}
           ">
 
-            <p class=" z-10 h-8 px-1 mx-auto mt-4 text-lg font-bold tracking-widest bg-white ${color} border-2 border-black rounded"
-            ">${year}</p>
+            <p class="z-10 h-8 px-1 mx-auto mt-4 text-lg font-bold tracking-widest bg-white ${color} border-2 border-black rounded">
+            ${year}
+            </p>
 
             <div class="
             bg-white
